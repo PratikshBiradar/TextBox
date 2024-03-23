@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="TextStyle.css">
+	<title>TEXT BOX</title>
+</head>
+<body>
+	<h1 align="center" class="heading">TEXT BOX</h1>
+	<div class="container" align="center">
+		<form class="textboxform">
+			<label>enter your text below</label>
+			 <br><br>
+			 <textarea id="text" rows="10" cols="70" onkeyup="updateInfo()" autofocus></textarea>
+			 <br><br>
+			 <button type="butten" onclick="transformUpperCase()">UPPERCASE</button>
+			 <button type="butten" onclick="transformLowerCase()">LOWERCASE</button>
+			 <button type="butten" onclick="findText()">FIND</button>
+			 <button type="butten" onclick="changeColor()">CHANGECOLOR</button>
+			 <button type="butten" onclick="textUnderline()">UNDERLINE</button>
+			 <br><br>
+			 <h2 id="textinfo">this text contins 0 words and 0 charaters</h2>
+		</form>
+		
+	</div>
+	<script type="text/javascript">
+		let text = document.getElementById("text");
+		let textInfo = document.getElementById('textinfo');
+		let clr;
+		function transformUpperCase() {
+			text.value = text.value.toUpperCase();
+		}
+		function transformLowerCase() {
+			text.value = text.value.toLowerCase();
+		}
+		function findText() {
+			let searchText = prompt("enter the text : ");
+			if(text.value.includes(searchText))
+			{
+				alert(`search text "${searchText}" is persent`);
+			}else{
+				alert(`search text "${searchText}" is not persent`);
+			}
+		}
+		function changeColor() {
+			clr = prompt(("enter your fav color : ").toLowerCase())
+			text.style.color=clr;
+		}
+		function textUnderline() {
+			text.style.textDecoration= `Underline 2px solod ${clr}`
+		}
+		function updateInfo() {
+			let numberofWords=text.value.trim().split(" ").length
+			textInfo.innerHTML= `This text contins ${numberofWords}words and ${text.value.length}charecters`
+		}
+	</script>
+
+</body>
+</html>
